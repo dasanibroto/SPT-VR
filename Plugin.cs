@@ -17,6 +17,7 @@ using System.Text;
 namespace TarkovVR
 {
     [BepInPlugin("com.matsix.sptvr", "matsix-sptvr", "1.2.1")]
+    [BepInDependency("com.anibroto.fikavrsync", BepInDependency.DependencyFlags.SoftDependency)]
     public class Plugin : BaseUnityPlugin
     {
         public static ManualLogSource MyLog;
@@ -288,6 +289,17 @@ namespace TarkovVR
             {
                 MyLog.LogWarning("FIKA Core dll not found, support patches will not be applied.");
             }
+
+            modDllPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "BepInEx\\plugins\\FIKAVRSync\\FIKAVRSync.dll");
+
+            if (File.Exists(modDllPath))
+            {
+                MyLog.LogInfo("Dependent mod FIKAVRSync found. Applying Networking Bridge patches.");
+                
+                // Apply conditional patches
+                ApplyPatches("TarkovVR.ModSupport.FIKAVRSyncPatch");
+            }
+
             // Repeat for other mods (AmandsGraphics, FIKA) as needed
         }
 

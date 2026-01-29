@@ -69,6 +69,9 @@
     <Reference Include="Fika.Core">
       <HintPath>libs\ModSupport\Fika.Core.dll</HintPath>
     </Reference>
+    <Reference Include="FIKAVRSync">
+      <HintPath>libs\ModSupport\FIKAVRSync.dll</HintPath>
+    </Reference>
     <Reference Include="ItemComponent.Types">
       <HintPath>libs\Managed\ItemComponent.Types.dll</HintPath>
     </Reference>
